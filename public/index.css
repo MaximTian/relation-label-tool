@@ -1,0 +1,116 @@
+.item {
+    border: 1px solid #ea4d4d;
+    margin: 10px;
+    padding: 5px;
+}
+
+.index {
+    margin-left: 20px;
+    font-size: 14pt;
+}
+
+.sentence {
+    border: 1px solid rgb(63, 138, 230);
+    margin-top: 7px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 5px;
+    font-size: 15pt;
+}
+
+.entity-buttons {
+    margin-top:16px;
+    display: flex;
+}
+
+.entity-wrapper-one {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.entity-wrapper-two {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.set-one {
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.set-two {
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.one {
+    font-size: 15pt;
+}
+
+.two {
+    font-size: 15pt;
+}
+
+.abandon-btn {
+    margin-left: 20px;
+    font-size: 13pt;
+    width: 80px;
+}
+
+.relation-type {
+    margin-top: 15px;
+}
+
+.relation-type > label {
+    margin-left: 20px;
+    font-size: 16pt;
+    text-align: center
+}
+
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+.last {
+    display: flex;
+    justify-content: center;
+}
+
+.save-btn {
+    margin-right:10px;
+    margin-bottom: 16px;
+    width: 190px; /* 宽度 */
+	height: 35px; /* 高度 */
+	border-width: 0px; /* 边框宽度 */
+	border-radius: 3px; /* 边框半径 */
+	background: #1E90FF; /* 背景颜色 */
+	cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+	outline: none; /* 不显示轮廓线 */
+	font-family: Microsoft YaHei; /* 设置字体 */
+	color: white; /* 字体颜色 */
+    font-size: 17px; /* 字体大小 */
+}
+
+.save-btn:hover { /* 鼠标移入按钮范围时改变颜色 */
+	background: #5599FF;
+}
+
+.reset-btn {
+    margin-left:10px;
+    margin-bottom: 16px;
+    width: 190px; /* 宽度 */
+	height: 35px; /* 高度 */
+	border-width: 0px; /* 边框宽度 */
+	border-radius: 3px; /* 边框半径 */
+	background: #1E90FF; /* 背景颜色 */
+	cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+	outline: none; /* 不显示轮廓线 */
+	font-family: Microsoft YaHei; /* 设置字体 */
+	color: white; /* 字体颜色 */
+    font-size: 17px; /* 字体大小 */
+}
+
+.reset-btn:hover { /* 鼠标移入按钮范围时改变颜色 */
+	background: #5599FF;
+}
