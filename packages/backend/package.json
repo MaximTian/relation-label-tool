@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "supervisor server.js"
+  },
+  "dependencies": {
+    "koa": "^2.5.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-route": "^3.2.0",
+    "koa-session": "^5.8.2",
+    "mongodb": "^3.1.3"
+  }
+}

@@ -1,7 +1,7 @@
 const RELATION_TYPES = ['合作', '从属', '买买', '合并', '竞争']
 
-let cachedDataList = null  // 当前数据
-let user_name = null  // 当前用户
+let cachedDataList = null // 当前数据
+let user_name = null // 当前用户
 
 function chang_entity(selector) {
   const selection = document.getSelection()
@@ -94,15 +94,15 @@ function item_generator(data_list) {
     item.find('.set-one').on('click', () => chang_entity('.one'))
     item.find('.set-two').on('click', () => chang_entity('.two'))
     item.find('.abandon-btn').on('click', function() {
-      item.find('.sentence')
-          .css('text-decoration', 'line-through')
+      item.find('.sentence').css('text-decoration', 'line-through')
     })
     i++
   }
 }
 
 function getCurrentData(item) {
-  let label = item.find('.sentence').css('text-decoration') === 'line-through solid rgb(0, 0, 0)' ? -1 : 1
+  let label =
+    item.find('.sentence').css('text-decoration') === 'line-through solid rgb(0, 0, 0)' ? -1 : 1
   const entityOne = item.find('.one').text()
   const entityTwo = item.find('.two').text()
   const itemId = Number(item.data('itemId'))
@@ -114,14 +114,14 @@ function getCurrentData(item) {
       return element.checked ? RELATION_TYPES[index] : null
     })
     .filter(Boolean)
-  
+
   if (label == -1) {
     return {
       itemId,
       entityOne: null,
       entityTwo: null,
       relations,
-      label
+      label,
     }
   } else if (entityOne == '[尚未设置]' || entityTwo == '[尚未设置]' || relations.length == 0) {
     return null
@@ -131,7 +131,7 @@ function getCurrentData(item) {
       entityOne,
       entityTwo,
       relations,
-      label
+      label,
     }
   }
 }
@@ -146,13 +146,13 @@ saveBtn.on('click', async function() {
     method: 'POST',
     body: JSON.stringify(dataList),
     headers: {
-      'content-type': 'application/json'
-    }
+      'content-type': 'application/json',
+    },
   })
   if (!response.ok) {
     alert('更新失败')
   } else {
-    $('.item_list').html("")
+    $('.item_list').html('')
     const response = await fetch(`/get-data?offset=0&limit=4&usedname=${user_name}`)
     if (response.ok) {
       cachedDataList = null
@@ -170,9 +170,13 @@ resetBtn.on('click', function() {
 })
 
 async function main() {
-  setInterval(function() { fetch(`/heart-beat?username=${user_name}`) }, 1000);
-  user_name = prompt("请输出用户名:")
-  const response = await fetch(`/get-data?offset=0&limit=4&usedname=${user_name}`,{mode:'no-cors'})
+  setInterval(function() {
+    fetch(`/heart-beat?username=${user_name}`)
+  }, 1000)
+  user_name = prompt('请输出用户名:')
+  const response = await fetch(`/get-data?offset=0&limit=4&usedname=${user_name}`, {
+    mode: 'no-cors',
+  })
   if (response.ok) {
     const dataList = await response.json()
     cachedDataList = dataList

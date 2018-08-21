@@ -6,7 +6,7 @@ const route = require('koa-route')
 const dbUtils = require('./db-utils')
 
 const app = new Koa()
-app.keys = ['some secret hurr']
+app.keys = ['some secret keys']
 app.use(session(app))
 app.use(bodyParser())
 
