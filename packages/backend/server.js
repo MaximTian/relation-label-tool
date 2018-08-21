@@ -19,23 +19,6 @@ async function main() {
   await dbUtils.clearLocks(db)
 
   app.use(
-    route.get('/', ctx => {
-      ctx.body = fs.readFileSync('./public/index.html', 'utf-8')
-    }),
-  )
-  app.use(
-    route.get('/public/index.css', ctx => {
-      ctx.body = fs.readFileSync('./public/index.css', 'utf8')
-      ctx.set('Content-Type', 'text/css')
-    }),
-  )
-  app.use(
-    route.get('/public/index.js', ctx => {
-      ctx.body = fs.readFileSync('./public/index.js', 'utf8')
-    }),
-  )
-
-  app.use(
     route.get('/get-data', async ctx => {
       const offset = Number(ctx.query.offset)
       const limit = Number(ctx.query.limit)

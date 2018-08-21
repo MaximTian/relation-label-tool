@@ -36,10 +36,9 @@ module.exports = (env = {}) => ({
     ],
   },
   devServer: {
-    // index: '',
-    // proxy: {
-    //   '/': 'http://localhost:3000',
-    // },
+    proxy: {
+      '/': 'http://localhost:3000',
+    },
     contentBase: __dirname,
     hot: true,
   },
