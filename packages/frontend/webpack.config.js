@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 
-module.exports = (env = {}) => ({
+module.exports = () => ({
   entry: path.resolve(__dirname, 'src/main.js'),
   output: {
     // publicPath: '/public',
@@ -22,8 +22,12 @@ module.exports = (env = {}) => ({
           {
             loader: 'babel-loader',
             options: {
-              presets: ['babel-preset-react', 'babel-preset-env'],
-              plugins: ['react-hot-loader/babel', 'babel-plugin-transform-decorators-legacy'],
+              presets: ['babel-preset-react'],
+              plugins: [
+                'react-hot-loader/babel',
+                'babel-plugin-transform-decorators-legacy',
+                'babel-plugin-transform-class-properties',
+              ],
             },
           },
         ],
@@ -36,6 +40,8 @@ module.exports = (env = {}) => ({
     ],
   },
   devServer: {
+    host: '0.0.0.0',
+    public: '10.214.224.11:8080',
     proxy: {
       '/': 'http://localhost:3000',
     },

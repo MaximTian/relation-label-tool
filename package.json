@@ -9,6 +9,7 @@
     "build-frontend": "yarn run --cwd=packages/frontend build"
   },
   "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "copyfiles": "^2.0.0",
     "husky": "^1.0.0-rc.9",
     "lerna": "^2.11.0",

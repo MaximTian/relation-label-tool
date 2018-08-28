@@ -1,13 +1,18 @@
 {
   "private": true,
   "scripts": {
-    "start": "supervisor server.js"
+    "start": "supervisor -- server.js --port=3000 --coll=relation_sentence_test",
+    "server-1": "node server.js --port=4000 --coll=org_to_org_1",
+    "server-2": "node server.js --port=4001 --coll=org_to_org_2",
+    "server-3": "node server.js --port=4002 --coll=relation_sentence"
   },
   "dependencies": {
     "koa": "^2.5.2",
     "koa-bodyparser": "^4.2.1",
     "koa-route": "^3.2.0",
     "koa-session": "^5.8.2",
+    "koa-static": "^5.0.0",
+    "minimist": "^1.2.0",
     "mongodb": "^3.1.3"
   }
 }
