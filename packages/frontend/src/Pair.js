@@ -1,5 +1,7 @@
 import React from 'react'
 import RelationItem from './RelationItem'
+import SelectionItem from './SelectionItem'
+import { RELATION_TYPES } from './constants'
 
 function findItemId(node) {
   if (node == null) {
@@ -69,7 +71,7 @@ export default class Pair extends React.Component {
   }
 
   render() {
-    const { pair, itemId, pairIndex, sentence, onDeletePair } = this.props
+    const { pair, itemId, pairIndex, sentence, onDeletePair, onSetRelationType } = this.props
     return (
       <div>
         <div className="entity-buttons">
@@ -99,8 +101,20 @@ export default class Pair extends React.Component {
             删除实体对
           </button>
         </div>
+        <div className="select-type">
+          <select
+            defaultValue={pair.relationType}
+            onChange={event => onSetRelationType(itemId, pairIndex, event.target.value)}
+          >
+            <SelectionItem />
+          </select>
+        </div>
         <div className="relation-type">
-          <RelationItem relations={pair.relations} onToggleRelation={this.onToggleRelation} />
+          <RelationItem
+            relations={pair.relations}
+            relationTypes={RELATION_TYPES[pair.relationType]}
+            onToggleRelation={this.onToggleRelation}
+          />
         </div>
       </div>
     )

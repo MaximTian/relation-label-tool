@@ -56,8 +56,13 @@
   font-size: 13pt;
 }
 
-.relation-type {
+.select-type {
+  margin-left: 20px;
   margin-top: 15px;
+}
+
+.relation-type {
+  margin-top: 10px;
 }
 
 .relation-type > label {

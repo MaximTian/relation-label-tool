@@ -1,7 +1,7 @@
 import React from 'react'
 import produce from 'immer'
 import { hot } from 'react-hot-loader'
-import './old/index.css'
+import './index.css'
 import Pager from './Pager'
 import { EMPTY_PAIR } from './constants'
 import BasicFrame from './BasicFrame'
@@ -37,6 +37,7 @@ export default class App extends React.Component {
   onPageChange = pageId => {
     const { pageSize } = this.state
     this.setState({ currentPageId: clamp(1, pageId, pageSize) })
+    window.scrollTo(0, 0)
   }
 
   onAddPair = itemId => {
@@ -96,6 +97,16 @@ export default class App extends React.Component {
       const item = draft.find(item => item.id === itemId)
       const pair = item.pairs[pairIndex]
       pair.relations = relations
+    })
+    this.setState({ itemList: nextItemList })
+  }
+
+  onSetRelationType = (itemId, pairIndex, relationType) => {
+    const { itemList } = this.state
+    const nextItemList = produce(itemList, draft => {
+      const item = draft.find(item => item.id === itemId)
+      const pair = item.pairs[pairIndex]
+      pair.relationType = relationType
     })
     this.setState({ itemList: nextItemList })
   }
@@ -179,6 +190,7 @@ export default class App extends React.Component {
             onSetEntityOne={this.onSetEntityOne}
             onSetEntityTwo={this.onSetEntityTwo}
             onSetRelation={this.onSetRelation}
+            onSetRelationType={this.onSetRelationType}
             onAbandonClick={this.onAbandonClick}
           />
         ))}
