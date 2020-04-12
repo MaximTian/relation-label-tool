@@ -2,6 +2,8 @@ import React from 'react'
 import RelationItem from './RelationItem'
 import SelectionItem from './SelectionItem'
 import { RELATION_TYPES } from './constants'
+import { Button } from '@blueprintjs/core'
+import { getEntityTypeColor } from './utils'
 
 function findItemId(node) {
   if (node == null) {
@@ -22,6 +24,18 @@ function findItemOffset(node) {
     return Number(node.dataset.offset)
   } else {
     return findItemOffset(node.parentElement)
+  }
+}
+
+function getEntityColor(entityState, entityType) {
+  if (entityState === 0) {
+    return 'none'
+  } else {
+    let color = getEntityTypeColor(entityType)
+    if (color === '#ffffff') {
+      color = 'none'
+    }
+    return color
   }
 }
 
@@ -71,51 +85,74 @@ export default class Pair extends React.Component {
   }
 
   render() {
-    const { pair, itemId, pairIndex, sentence, onDeletePair, onSetRelationType } = this.props
+    const { pair, itemId, pairIndex, sentence, onDeletePair, onSetRelationType, onSetEntityOneType, onSetEntityTwoType } = this.props
+    // console.log(pair)
     return (
       <div>
         <div className="entity-buttons">
+
           <div className="entity-wrapper-one">
-            <button className="set-one" onClick={() => this.onSetEntity('1')}>
-              Entity-One
-            </button>
+            <Button
+              icon='locate'
+              className="set-one" onClick={() => this.onSetEntity('1')}>
+              实体1
+            </Button>
             <div
-              className="one"
-              style={{ background: pair.s1 + pair.e1 !== 0 ? '#66cc99' : 'none' }}
-            >
-              {sentence.substring(pair.s1, pair.e1) || '[尚未设置]'}
+              className="entity-content"
+              style={{ background: getEntityColor(pair.s1 + pair.e1, pair.entityOneType) }}>
+              <span>
+                {sentence.substring(pair.s1, pair.e1) || '[尚未设置]'}
+              </span>
             </div>
+            <select
+              style={{backgroundColor: getEntityTypeColor(pair.entityOneType)}}
+              defaultValue={pair.entityOneType}
+              onChange={event => onSetEntityOneType(itemId, pairIndex, event.target.value)}
+            >
+              <SelectionItem />
+            </select>
           </div>
+
           <div className="entity-wrapper-two">
-            <button className="set-two" onClick={() => this.onSetEntity('2')}>
-              Entity-Two
-            </button>
+            <Button
+              icon='locate'
+              className="set-two" onClick={() => this.onSetEntity('2')}>
+              实体2
+            </Button>
             <div
-              className="two"
-              style={{ background: pair.s2 + pair.e2 !== 0 ? '#66cc99' : 'none' }}
-            >
-              {sentence.substring(pair.s2, pair.e2) || '[尚未设置]'}
+              className="entity-content"
+              style={{ background: getEntityColor(pair.s2 + pair.e2, pair.entityTwoType) }}>
+              <span>
+                {sentence.substring(pair.s2, pair.e2) || '[尚未设置]'}
+              </span>
             </div>
           </div>
-          <button className="abandon-btn" onClick={() => onDeletePair(itemId, pairIndex)}>
-            删除实体对
-          </button>
-        </div>
-        <div className="select-type">
           <select
-            defaultValue={pair.relationType}
-            onChange={event => onSetRelationType(itemId, pairIndex, event.target.value)}
+            style={{backgroundColor: getEntityTypeColor(pair.entityTwoType)}}
+            defaultValue={pair.entityTwoType}
+            onChange={event => onSetEntityTwoType(itemId, pairIndex, event.target.value)}
           >
             <SelectionItem />
           </select>
+          <Button className="abandon-btn" style={{background: '#f9e2e1'}} onClick={() => onDeletePair(itemId, pairIndex)}>
+            删除
+          </Button>
         </div>
-        <div className="relation-type">
-          <RelationItem
-            relations={pair.relations}
-            relationTypes={RELATION_TYPES[pair.relationType]}
-            onToggleRelation={this.onToggleRelation}
-          />
-        </div>
+        {/*<div className="select-type">*/}
+        {/*  <select*/}
+        {/*    defaultValue={pair.relationType}*/}
+        {/*    onChange={event => onSetRelationType(itemId, pairIndex, event.target.value)}*/}
+        {/*  >*/}
+        {/*    <SelectionItem />*/}
+        {/*  </select>*/}
+        {/*</div>*/}
+        {/*<div className="relation-type">*/}
+        {/*  <RelationItem*/}
+        {/*    relations={pair.relations}*/}
+        {/*    relationTypes={RELATION_TYPES[pair.relationType]}*/}
+        {/*    onToggleRelation={this.onToggleRelation}*/}
+        {/*  />*/}
+        {/*</div>*/}
       </div>
     )
   }

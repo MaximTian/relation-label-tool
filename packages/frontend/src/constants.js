@@ -1,5 +1,8 @@
-export const EMPTY_PAIR = { s1: 0, e1: 0, s2: 0, e2: 0, relations: [], relationType: 'ORG_ORG' }
-export const SELECT_TYPES = ['ORG_ORG', 'ORG_PER', 'PER_PER', 'ORG_PRODUCT', 'ORG_DOMAIN']
+export const EMPTY_PAIR = {
+  s1: 0, e1: 0, s2: 0, e2: 0,
+  entityOneType: 'None', entityTwoType: 'None',
+  relations: [], relationType: 'ORG_ORG' }
+export const SELECT_TYPES = ['None', '机构', '人名', '地理', '数字']
 export const RELATION_TYPES = {
   ORG_ORG: ['合作', '从属', '买卖', '合并', '竞争', '委托'],
   ORG_PER: ['任职', '学习', '创始人', '投资人'],

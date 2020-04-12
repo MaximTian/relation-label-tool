@@ -5863,7 +5863,7 @@ schema-utils@^0.4.4, schema-utils@^0.4.5:
   resolved "http://registry.npm.taobao.org/schema-utils/download/schema-utils-0.4.7.tgz#ba74f597d2be2ea880131746ee17d0a093c68187"
   dependencies:
     ajv "^6.1.0"
-    ajv-keywords "^3.1.0"
+    ajv- "^3.1.0"
 
 scoped-regex@^1.0.0:
   version "1.0.0"

@@ -41,7 +41,7 @@ module.exports = () => ({
   },
   devServer: {
     host: '0.0.0.0',
-    public: '10.214.224.11:8080',
+    public: '10.214.224.118:8080',
     proxy: {
       '/': 'http://localhost:3000',
     },

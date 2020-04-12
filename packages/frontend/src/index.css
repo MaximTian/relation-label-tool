@@ -1,7 +1,11 @@
+.labelFrame {
+  display: block;
+  margin-top: 10px;
+  position: fixed;
+}
+
 .item {
-  border: 1px solid #ea4d4d;
-  margin: 10px;
-  padding: 5px;
+  border-bottom: 3px solid #d1d1d1;
 }
 
 .index {
@@ -10,16 +14,13 @@
 }
 
 .sentence {
-  border: 1px solid rgb(63, 138, 230);
-  margin-top: 7px;
-  margin-left: 20px;
-  margin-right: 20px;
-  padding-left: 5px;
+  border-bottom: 1px solid #d1d1d1;
+  padding: 10px;
   font-size: 15pt;
 }
 
 .entity-buttons {
-  margin-top: 16px;
+  margin-top: 10px;
   display: flex;
 }
 
@@ -43,12 +44,9 @@
   margin-right: 10px;
 }
 
-.one {
-  font-size: 15pt;
-}
-
-.two {
-  font-size: 15pt;
+.entity-content {
+  padding: 5px;
+  font-size: 12pt;
 }
 
 .abandon-btn {
@@ -63,17 +61,7 @@
 
 .relation-type {
   margin-top: 10px;
-}
-
-.relation-type > label {
-  margin-left: 20px;
-  font-size: 16pt;
-  text-align: center;
-}
-
-input[type='checkbox'] {
-  width: 18px;
-  height: 18px;
+  display: flex;
 }
 
 .last {
@@ -89,10 +77,10 @@ input[type='checkbox'] {
 }
 
 .add-abandoned {
-  margin-top: 12px;
+  margin-top: 10px;
   margin-left: 20px;
   display: flex;
-  font-size: 14pt;
+  font-size: 14px;
 }
 
 .abandonedBtn {
@@ -121,11 +109,105 @@ input[type='checkbox'] {
   align-items: center;
   display: flex;
   font-size: 15px;
-  position: fixed;
   background: white;
-  left: 0;
-  right: 0;
-  top: 0;
   height: 50px;
   border-bottom: 2px solid #ccc;
+  z-index: 1;
+}
+
+.appLayout {
+  display: flex;
+  margin-left: 10px;
+}
+
+.addLabelBlock {
+  width: 250px; /* 宽度 */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  align-items: center;
+}
+
+.addLabelBtn {
+  margin-left: 10px;
+}
+
+.allLabel > div {
+  margin-left: 10px;
+  margin-top: 10px;
+  font-size: medium;
+}
+
+.Keywords {
+  margin-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  border-top: 1px solid #d1d1d1;
+}
+
+.TextLabels {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  border-top: 1px solid #d1d1d1;
+}
+
+.centerLayout {
+  margin-left: 16%;
+  padding-bottom: 40px;
+  border: 2px solid #d1d1d1;
+  border-top: none;
+  border-bottom: none;
+}
+
+.LabelSpan {
+  margin-left: 20px;
+  font-size: 14px;
+  color: #182026;
+}
+
+.RightLayout {
+  display: block;
+  width: 50%;
+}
+
+.AlgorithmTitle {
+  border-bottom: 1px solid #d1d1d1;
+  height: 50px;
+  text-align: center;
+  font-size: 12pt;
+  padding-top: 14px;
+}
+
+.AlgorithmLayout {
+  border-bottom: 2px solid #d1d1d1;
+}
+
+.algorithm-explained {
+  outline-style: none ;
+  border: 1px solid #66afe9;
+  border-radius: 3px;
+  margin: 10px;
+  padding: 14px 14px;
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /*font-family: 'Microsoft soft';*/
+}
+
+.color-item > span {
+  width: 40%;
+  font-size: 16px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.colorBlock {
+  margin-left: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+select:hover {
+  background: #EBCCD1;
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { ButtonGroup, Button, Classes } from '@blueprintjs/core'
 import { getShowPages } from './page-utils'
+import RelationDocumentsItem from './RelationDocumentsItem'
 
 export default class Pager extends React.Component {
   state = {
@@ -12,10 +13,14 @@ export default class Pager extends React.Component {
   }
 
   render() {
-    const { pageSize, currentPageId, onPageChange } = this.props
+    const { pageSize, currentPageId, onPageChange, isOpen, onRelationDocumentsClick } = this.props
 
     return (
       <div className="pageFrame">
+        <RelationDocumentsItem isOpen={isOpen} onRelationDocumentsClick={onRelationDocumentsClick} />
+        <Button style={{ marginRight: 16 }} onClick={() => onRelationDocumentsClick(true)}>
+          关系文档
+        </Button>
         <Button style={{ marginRight: 16 }} onClick={() => onPageChange(currentPageId - 1)}>
           上一页
         </Button>
